@@ -1,3 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em;
+    overflow-x: hidden;
+    background-color: #1f2933;
+    color: #e3f2fd;
+}
+
+#content {
+    width: 70%;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding: 1.25rem 1.5rem;
+    border-radius: 18px;
+
+    background: linear-gradient(135deg,
+            #cfe7f9,
+            #c8dff7);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    color: #1f2933;
+    margin-top: 4em;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 800;
+    margin-bottom: 5em;
+}
+
+.top-info {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.top-info-icon {
+    font-size: 4.5em;
+}
+
+.location-name {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+.temp-text {
+    font-size: 3em;
+    margin: 0;
+}
+
+.condition {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.bottom-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(4em, 1fr));
+    gap: 2em;
+    justify-items: center;
+}
+
+.card {
+    width: 16em;
+    height: 4em;
+    background-color: #7696d1;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.card-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: #444;
+    fill: none;
+    stroke-width: 1.8;
+}
+
+.icon.sunrise {
+    stroke: #ff9800;
+}
+
+.icon.sunset {
+    stroke: #ff7043;
+}
+
+.icon.wind {
+    stroke: #03a9f4;
+}
+
+.icon.humidity {
+    stroke: #2196f3;
+}
+
+.icon.uv {
+    stroke: #fbc02d;
+}
+
+.icon.rain {
+    stroke: #4fc3f7;
+}
+
+.icon.temperature {
+    stroke: #ff4c43;
+}
+
+.icon.temperature.min {
+    stroke: #03a9f4;
+}
+
+/* .card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+} */
+
+.hours-card-container {
+    margin: 0 auto;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1em;
+    width: 90%;
+    overflow: scroll hidden;
+}
+
+.hours-container-heading {
+    text-align: center;
+    margin: 2em 0 1em;
+    font-size: 1.8em;
+}
+
+.hour-card {
+    width: 200px;
+    height: 250px;
+    background-color: #7696d1;
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    text-align: center;
+}
+
+.hour-card-icon {
+    font-size: 1.5em;
+}
+
+.hour-card.current-hour {
+    border: 2px solid #ff9800;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    transform: scale(1.02);
+}
+
+.hour-card.current-hour h3 {
+    font-weight: 700;
+    color: #e65100;
+}
+
+.tomorrow-hour {
+    opacity: 0.75;
+    background-color: #a9c0ec;
+}
+
+.tomorrow-hour .hour-card-icon {
+    filter: grayscale(20%);
+}
+
+.current-hour {
+    opacity: 1;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
 }
