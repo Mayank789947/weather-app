@@ -1,5 +1,5 @@
-async function getWeatherData(location = "London") {
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=J9ZSVTFNZX3VEFD6AFYSHA7WQ`;
+async function getWeatherData(location) {
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&include=hours%2Ccurrent%2Calerts%2Cdays&key=J9ZSVTFNZX3VEFD6AFYSHA7WQ`;
 
     const response = await fetch(url);
     const weatherData = await response.json();
@@ -15,15 +15,36 @@ async function createWeatherDataObj(place) {
 
     const weatherObj = {
         place: data.address,
-        description: data.description,
-        conditions: data.currentConditions.conditions,
         temperature: data.currentConditions.temp,
-        humidity: data.currentConditions.humidity,
-        precipitation: data.currentConditions.precipprob,
-        sunrise: data.currentConditions.sunrise,
-        sunset: data.currentConditions.sunset,
-        windSpeed: data.currentConditions.windspeed,
-        uvIndex: data.currentConditions.uvindex
+        conditions: data.currentConditions.conditions,
+        icon: data.currentConditions.icon,
+        days: data.days,
+        moreInfo: [
+            {
+               "Max.": data.days[0].tempmax + " °C"
+            },
+            {
+               "Min.": data.days[0].tempmin + " °C"
+            },
+            {
+                "UV Index": data.currentConditions.uvindex
+            },
+            {
+                "Wind Speed": data.currentConditions.windspeed + " Km",
+            },
+            {
+                "Precipitation": data.currentConditions.precipprob,
+            },
+            {
+                "Sunrise": data.currentConditions.sunrise,
+            },
+            {
+                "Sunset": data.currentConditions.sunset,
+            },
+            {
+                "Humidity": data.currentConditions.humidity + " %"
+            },
+        ]
     }
 
     return weatherObj;
