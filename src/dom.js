@@ -187,7 +187,7 @@ async function loadContent(locationName) {
 
     const hoursContainerHeading = document.createElement("h2");
     hoursContainerHeading.classList.add("hours-container-heading");
-    hoursContainerHeading.textContent = "Next 12 hours forecast";
+    hoursContainerHeading.textContent = "Next 12 Hours Forecast";
 
     const currentHour = new Date().getHours();
     const next12Hours = getNext12Hours(data.days, currentHour);

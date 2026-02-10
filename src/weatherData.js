@@ -1,17 +1,25 @@
 async function getWeatherData(location) {
+    if (!location) {
+        throw new Error("Location is required");
+    }
+
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&include=hours%2Ccurrent%2Calerts%2Cdays&key=J9ZSVTFNZX3VEFD6AFYSHA7WQ`;
 
     const response = await fetch(url);
-    const weatherData = await response.json();
 
-    console.log(weatherData);
-    console.log(weatherData.currentConditions);
+    if (!response.ok) {
+        throw new Error("Failed to fetch weather data");
+    }
 
-    return weatherData;
+    return response.json();
 }
 
 async function createWeatherDataObj(place) {
     const data = await getWeatherData(place);
+
+    if (!data) {
+        throw new Error("No weather data received");
+    }
 
     const weatherObj = {
         place: data.address,
@@ -21,10 +29,10 @@ async function createWeatherDataObj(place) {
         days: data.days,
         moreInfo: [
             {
-               "Max.": data.days[0].tempmax + " °C"
+                "Max.": data.days[0].tempmax + " °C"
             },
             {
-               "Min.": data.days[0].tempmin + " °C"
+                "Min.": data.days[0].tempmin + " °C"
             },
             {
                 "UV Index": data.currentConditions.uvindex
