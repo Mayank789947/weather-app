@@ -188,7 +188,6 @@ body {
 .d-card {
     width: 200px;
     height: 250px;
-    /* background-color: #89acef; */
     color: black;
     background: linear-gradient(135deg, #7ac3f4, #929dcb);
     padding: 1em;
@@ -226,7 +225,7 @@ body {
 }
 
 .tomorrow-hour {
-    opacity: 0.9;
+    background: linear-gradient(135deg, #7af486, #929dcb);
 }
 
 .tomorrow-hour .hour-card-icon {
