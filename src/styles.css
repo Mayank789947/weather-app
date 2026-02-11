@@ -14,6 +14,32 @@ body {
     color: #e3f2fd;
 }
 
+#main-heading {
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+.form-container>input {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    margin-right: 0.5em;
+}
+
+.form-container>button {
+    padding: 0.6em 1.2em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #e65100;
+    color: #e3f2fd;
+    border: none;
+}
+
+.form-container>button:hover {
+    background-color: #fb6c1f;
+}
+
 #content {
     width: 70%;
 }
@@ -23,12 +49,12 @@ body {
     flex-direction: column;
     gap: 0.75rem;
 
-    padding: 1.25rem 1.5rem;
+    padding: 4rem 2rem;
     border-radius: 18px;
 
     background: linear-gradient(135deg,
-            #cfe7f9,
-            #c8dff7);
+            #b3d9f6,
+            #a3c2e2);
 
     box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.08),
@@ -53,21 +79,21 @@ body {
 }
 
 .top-info-icon {
-    font-size: 4.5em;
+    font-size: 5em;
 }
 
 .location-name {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 1em;
 }
 
 .temp-text {
-    font-size: 3em;
+    font-size: 3.5em;
     margin: 0;
 }
 
 .condition {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 500;
 }
 
@@ -82,12 +108,14 @@ body {
 .card {
     width: 16em;
     height: 4em;
-    background-color: #7696d1;
+    background-color: #2f4775;
+    color: #e3f2fd;
     padding: 0.5em 1em;
     border-radius: 1em;
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.6em;
+    font-size: 1.1em;
 }
 
 .card-icon svg {
@@ -130,13 +158,8 @@ body {
     stroke: #03a9f4;
 }
 
-/* .card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-} */
-
-.hours-card-container {
+.hours-card-container,
+.days-card-container {
     margin: 0 auto;
     padding: 1em;
     display: grid;
@@ -144,18 +167,29 @@ body {
     gap: 1em;
     width: 90%;
     overflow: scroll hidden;
+    cursor: pointer;
 }
 
-.hours-container-heading {
+.days-card-container {
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+    padding-left: 1.6em;
+    font-size: 1.2em;
+}
+
+.hours-container-heading,
+.days-container-heading {
     text-align: center;
     margin: 2em 0 1em;
     font-size: 1.8em;
 }
 
-.hour-card {
+.hour-card,
+.d-card {
     width: 200px;
     height: 250px;
-    background-color: #7696d1;
+    background-color: #6185c6;
+    color: black;
     padding: 1em;
     border-radius: 1em;
     display: flex;
@@ -166,8 +200,17 @@ body {
     text-align: center;
 }
 
+.d-card {
+    width: 320px;
+    height: 400px;
+}
+
 .hour-card-icon {
     font-size: 1.5em;
+}
+
+.d-card-icon {
+    font-size: 2em;
 }
 
 .hour-card.current-hour {
@@ -177,13 +220,13 @@ body {
 }
 
 .hour-card.current-hour h3 {
-    font-weight: 700;
+    font-weight: 800;
     color: #e65100;
 }
 
 .tomorrow-hour {
-    opacity: 0.75;
-    background-color: #a9c0ec;
+    opacity: 0.9;
+    background-color: #94b2ec;
 }
 
 .tomorrow-hour .hour-card-icon {

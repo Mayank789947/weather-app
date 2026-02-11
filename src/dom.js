@@ -10,10 +10,10 @@ function to12HourFormat(time24) {
     return `${hour}:${minute} ${ampm}`;
 }
 
-// function getDayNightIcon(hour24) {
-//     const hour = hour24.split(":")[0];
-//     return hour >= 6 && hour < 18 ? "🌞" : "🌙";
-// }
+function dateFormatter(date) {
+  const [ year, month, day] = date.split("-");
+  return `${day}-${month}-${year}`;
+}
 
 function getNext12Hours(days, currentHour) {
     const todayHours = days[0].hours.slice(currentHour);
@@ -229,7 +229,52 @@ async function loadContent(locationName) {
 
     })
 
-    content.append(dataContainer, hoursContainerHeading, hoursCardContainer);
+
+    const daysCardContainer = document.createElement("div");
+    daysCardContainer.classList.add("days-card-container");
+
+    const daysContainerHeading = document.createElement("h2");
+    daysContainerHeading.classList.add("days-container-heading");
+    daysContainerHeading.textContent = "Next 3 Days Forecast";
+
+    data.days.forEach((d, index) => {
+
+      if(index === 1 || index < 3) {
+
+        const dayCard = document.createElement("div");
+        dayCard.classList.add("d-card");
+
+        const dayDate = document.createElement("h3");
+        dayDate.textContent = dateFormatter(d.datetime);
+
+        const dCardIcon = document.createElement("span");
+        dCardIcon.classList.add("d-card-icon");
+        dCardIcon.textContent = getWeatherIcon(d.conditions);
+
+        const dayCondition = document.createElement("p");
+        dayCondition.textContent = `${d.conditions}`;
+
+        const dayMaxTemp = document.createElement("p");
+        dayMaxTemp.textContent = `Max: ${d.tempmax} °C`;
+
+        const dayMinTemp = document.createElement("p");
+        dayMinTemp.textContent = `Min: ${d.tempmin} °C`;
+
+        const sunrise = document.createElement("p");
+        sunrise.textContent = `Sunrise: ${to12HourFormat(d.sunrise)}`;
+
+        const sunset = document.createElement("p");
+        sunset.textContent = `Sunset: ${to12HourFormat(d.sunset)}`;
+
+        dayCard.append(dayDate, dCardIcon, dayCondition, dayMaxTemp, dayMinTemp, sunrise, sunset);
+        daysCardContainer.append(dayCard);
+
+      }
+
+    })
+
+    content.append(dataContainer, hoursContainerHeading, hoursCardContainer, daysContainerHeading, daysCardContainer);
+
 }
 
 export { loadContent }
