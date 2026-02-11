@@ -1,10 +1,9 @@
 import { loadContent } from "./dom.js";
 import "./styles.css";
-import { createWeatherDataObj } from "./weatherData.js";
 
 const contentContainer = document.querySelector("#content");
 const input = document.querySelector("#location");
-const submitBtn = document.querySelector("#submit");
+const myForm = document.querySelector("form");
 
 const loader = document.getElementById("loader");
 
@@ -16,8 +15,8 @@ function hideLoader() {
   loader.classList.add("hidden");
 }
 
-submitBtn.addEventListener("click", async (e) => {
-
+myForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
     const inputLocation = input.value.trim();
 
     if (!inputLocation) {
