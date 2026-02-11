@@ -9,7 +9,7 @@ async function getWeatherData(location) {
     const isValid = /^[a-zA-Z\s]+$/.test(location);
 
     if (!isValid) {
-        throw new Error("Enter a Valid City Name (Letters only)");
+        throw new Error("Enter a valid city name (letters only)");
     }
 
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&include=hours%2Ccurrent%2Calerts%2Cdays&key=J9ZSVTFNZX3VEFD6AFYSHA7WQ`;
@@ -17,15 +17,17 @@ async function getWeatherData(location) {
     const response = await fetch(url);
 
     if (!response.ok) {
-        throw new Error("Failed to Fetch Weather Data");
+        throw new Error("Location not found");
     }
 
-      // Extra validation check
-    if (!data.address.toLowerCase().includes(location.toLowerCase())) {
-        throw new Error("Location Mismatch");
+    const data = await response.json();
+
+    // Extra validation check
+    if (!data.resolvedAddress.toLowerCase().includes(location.toLowerCase())) {
+        throw new Error("Location mismatch");
     }
 
-    return response.json();
+    return data;
 }
 
 async function createWeatherDataObj(place) {
