@@ -173,7 +173,7 @@ body {
 .days-card-container {
     grid-template-columns: repeat(3, 1fr);
     overflow: hidden;
-    padding-left: 1.6em;
+    padding-left: 3em;
     font-size: 1.2em;
 }
 
@@ -188,8 +188,9 @@ body {
 .d-card {
     width: 200px;
     height: 250px;
-    background-color: #6185c6;
+    /* background-color: #89acef; */
     color: black;
+    background: linear-gradient(135deg, #7ac3f4, #929dcb);
     padding: 1em;
     border-radius: 1em;
     display: flex;
@@ -226,7 +227,6 @@ body {
 
 .tomorrow-hour {
     opacity: 0.9;
-    background-color: #94b2ec;
 }
 
 .tomorrow-hour .hour-card-icon {
@@ -236,4 +236,39 @@ body {
 .current-hour {
     opacity: 1;
     background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ddd;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #e3f2fd;
+  letter-spacing: 0.5px;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
