@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+<script defer src="main.js"></script></head>
+
+<body>
+    <h1 id="main-heading">My Weather App</h1>
+    <form class="form-container">
+        <input type="text" name="location" id="location" placeholder="Enter Location">
+        <button type="submit" id="submit">Search</button>
+    </form>
+    <div id="content"></div>
+    <div id="loader" class="loader-container hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Fetching data...</p>
+    </div>
+</body>
+
+</html>
