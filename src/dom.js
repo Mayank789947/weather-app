@@ -119,7 +119,6 @@ function getInfoIconSVG(key) {
 async function loadContent(locationName) {
 
   const data = await createWeatherDataObj(locationName)
-  console.log(data.days);
 
   const content = document.querySelector("#content");
 
