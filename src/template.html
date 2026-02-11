@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
 </head>
+
 <body>
     <h1 id="main-heading">My Weather App</h1>
     <div class="form-container">
@@ -12,5 +14,10 @@
         <button type="submit" id="submit">Search</button>
     </div>
     <div id="content"></div>
+    <div id="loader" class="loader-container hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Fetching data...</p>
+    </div>
 </body>
+
 </html>
