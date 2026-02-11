@@ -271,3 +271,9 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.error-message {
+    font-size: 1.5em;
+    margin-top: 2em;
+    text-align: center;
+}

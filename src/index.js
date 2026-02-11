@@ -30,6 +30,10 @@ myForm.addEventListener("submit", async (e) => {
         await loadContent(inputLocation);
         input.value = "";
     } catch (error) {
+        const errorMessage = document.createElement("p");
+        errorMessage.classList.add("error-message");
+        errorMessage.textContent = "No Data Found. Try Again...";
+        contentContainer.appendChild(errorMessage);
         console.log(error);
     } finally {
         hideLoader();
